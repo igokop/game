@@ -1,0 +1,17 @@
+@import "/src/assets/scss/variables";
+
+.error-message {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background-color: $color-cbrg;
+  color: $color-white;
+  border-radius: 4px;
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 400;
+
+  &--hidden {
+    visibility: hidden;
+  }
+}

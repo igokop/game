@@ -1,0 +1,126 @@
+@import "/src/assets/scss/variables";
+
+.game-page {
+  padding: 0 30px;
+  margin: 0 auto;
+  max-width: 1140px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 160px;
+
+  &__header {
+    padding: 16px 0;
+  }
+
+  &__button {
+    font-size: 16px;
+    color: $color-white;
+    padding: 8px;
+    border: 1px solid $color-white;
+    border-radius: 4px;
+    width: fit-content;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover {
+      background-color: $color-cbrg;
+    }
+
+    &--big {
+      padding: 16px;
+      font-size: 32px;
+    }
+
+    &--disabled {
+      color: $color-gray;
+      border: 1px solid $color-gray;
+      cursor: initial;
+    }
+  }
+
+  &__cards-wrapper {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+
+  &__card {
+    height: 250px;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid $color-white;
+    color: $color-white;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    position: relative;
+
+    &:hover {
+      transform: rotateY(180deg);
+    }
+
+    &--won {
+      background-color: $color-cbrg;
+    }
+  }
+
+  &__flip-card-front {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    padding: 16px;
+    flex-direction: column;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    height: 100%;
+    position: absolute;
+  }
+
+  &__flip-card-back {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    padding: 16px;
+    gap: 16px;
+    display: flex;
+    flex-direction: column;
+    transform: rotateY(180deg);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  &__card-up {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__card-title {
+    color: $color-white;
+    font-weight: 500;
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
+
+  &__card-row {
+    color: $color-gray;
+    font-weight: 400;
+    font-size: 16px;
+
+    &--info {
+      color: $color-white;
+      font-weight: 500;
+    }
+  }
+
+  &__fight-button-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__won {
+    font-weight: 500;
+    font-size: 32px;
+    color: $color-white;
+  }
+}

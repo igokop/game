@@ -1,0 +1,21 @@
+<div class="home-page">
+  <p class="home-page__title">Game</p>
+  <div class="home-page__cards-wrapper">
+    <div
+      class="home-page__card home-page__card--clickable"
+      (click)="goToGame()"
+    >
+      Let's Play
+    </div>
+    <div class="home-page__card">Matches Played: {{ matchesPlayed }}</div>
+    <div class="home-page__card home-page__card--clickable" (click)="downloadResults()">
+      Download Results
+    </div>
+    <div
+      class="home-page__card home-page__card--clickable"
+      (click)="resetResults()"
+    >
+      Reset Results
+    </div>
+  </div>
+</div>

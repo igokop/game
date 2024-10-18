@@ -1,0 +1,173 @@
+<div class="game-page">
+  <div class="game-page__header">
+    <div class="game-page__button" (click)="goToHome()">Back to Home</div>
+  </div>
+  <div class="game-page__cards-wrapper">
+    <div
+      class="game-page__card"
+      [ngClass]="{ 'game-page__card--won': winner === 'user1' }"
+    >
+      <div class="game-page__flip-card-front">
+        <div class="game-page__card-up">
+          <p class="game-page__card-title">
+            User 1
+            {{ user1 && user2 ? " aka " + user1.name : "" }}
+          </p>
+          <p
+            class="game-page__card-row game-page__card-row--info"
+            *ngIf="user1 && user2"
+          >
+            Weight: {{ user1.mass }}
+          </p>
+          <p
+            class="game-page__card-row game-page__card-row--info"
+            *ngIf="user1 && user2"
+          >
+            Height: {{ user1.height }}
+          </p>
+        </div>
+
+        <p
+          class="game-page__card-row"
+          *ngIf="(!user1 || !user1) && (!ship1 || !ship2)"
+        >
+          Start game by clicking 'Get users data'
+        </p>
+        <p
+          class="game-page__card-row"
+          *ngIf="user1 && user2 && (!ship1 || !ship2)"
+        >
+          Continue game by clicking 'Get ships data'
+        </p>
+        <p *ngIf="winner === 'user1'" class="game-page__won">🏆 WINNER 🏆</p>
+      </div>
+      <div class="game-page__flip-card-back">
+        <div class="game-page__card-up">
+          <p class="game-page__card-title">
+            Ship 1
+            {{ ship1 && ship2 ? " aka " + ship1.name : "" }}
+          </p>
+          <p
+            class="game-page__card-row game-page__card-row--info"
+            *ngIf="ship1 && ship2"
+          >
+            Crew: {{ ship1.crew }}
+          </p>
+        </div>
+
+        <p
+          class="game-page__card-row"
+          *ngIf="(!user1 || !user1) && (!ship1 || !ship2)"
+        >
+          Start game by clicking 'Get users data'
+        </p>
+        <p
+          class="game-page__card-row"
+          *ngIf="user1 && user2 && (!ship1 || !ship2)"
+        >
+          Continue game by clicking 'Get ships data'
+        </p>
+      </div>
+    </div>
+    <div
+      class="game-page__card"
+      [ngClass]="{ 'game-page__card--won': winner === 'user2' }"
+    >
+      <div class="game-page__flip-card-front">
+        <div class="game-page__card-up">
+          <p class="game-page__card-title">
+            User 2
+            {{ user1 && user2 ? " aka " + user2.name : "" }}
+          </p>
+          <p
+            class="game-page__card-row game-page__card-row--info"
+            *ngIf="user1 && user2"
+          >
+            Weight: {{ user2.mass }}
+          </p>
+          <p
+            class="game-page__card-row game-page__card-row--info"
+            *ngIf="user1 && user2"
+          >
+            Height: {{ user2.height }}
+          </p>
+        </div>
+
+        <p
+          class="game-page__card-row"
+          *ngIf="(!user1 || !user1) && (!ship1 || !ship2)"
+        >
+          Start game by clicking 'Get users data'
+        </p>
+        <p
+          class="game-page__card-row"
+          *ngIf="user1 && user2 && (!ship1 || !ship2)"
+        >
+          Continue game by clicking 'Get ships data'
+        </p>
+        <p *ngIf="winner === 'user2'" class="game-page__won">🏆 WINNER 🏆</p>
+      </div>
+      <div class="game-page__flip-card-back">
+        <div class="game-page__card-up">
+          <p class="game-page__card-title">
+            Ship 2
+            {{ ship1 && ship2 ? " aka " + ship2.name : "" }}
+          </p>
+          <p
+            class="game-page__card-row game-page__card-row--info"
+            *ngIf="ship1 && ship2"
+          >
+            Crew: {{ ship2.crew }}
+          </p>
+        </div>
+
+        <p
+          class="game-page__card-row"
+          *ngIf="(!user1 || !user1) && (!ship1 || !ship2)"
+        >
+          Start game by clicking 'Get users data'
+        </p>
+        <p
+          class="game-page__card-row"
+          *ngIf="user1 && user2 && (!ship1 || !ship2)"
+        >
+          Continue game by clicking 'Get ships data'
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="game-page__fight-button-wrapper">
+    <div
+      class="game-page__button game-page__button--big"
+      [ngClass]="{ 'game-page__button--disabled': isLoading }"
+      (click)="getUsersData()"
+      *ngIf="(!user1 || !user2) && (!ship1 || !ship2)"
+    >
+      Get Users Data
+    </div>
+    <div
+      class="game-page__button game-page__button--big"
+      [ngClass]="{ 'game-page__button--disabled': isLoading }"
+      (click)="getShipsData()"
+      *ngIf="user1 && user2 && (!ship1 || !ship2)"
+    >
+      Get Ships Data
+    </div>
+    <div
+      class="game-page__button game-page__button--big"
+      [ngClass]="{ 'game-page__button--disabled': isLoading }"
+      *ngIf="user1 && user2 && ship1 && ship2 && !winner"
+      (click)="compare()"
+    >
+      Let's Fight!
+    </div>
+    <div
+      class="game-page__button game-page__button--big"
+      [ngClass]="{ 'game-page__button--disabled': isLoading }"
+      *ngIf="user1 && user2 && ship1 && ship2 && !!winner"
+      (click)="reset()"
+    >
+      Reset Game
+    </div>
+  </div>
+</div>
